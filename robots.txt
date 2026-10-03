@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pousadacostasuites.com.br/sitemap.xml
