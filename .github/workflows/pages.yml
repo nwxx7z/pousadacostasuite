@@ -23,15 +23,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
+      - name: Prepare uploaded room photos
+        shell: bash
+        run: |
+          mkdir -p assets/quarto-7
+          if [ -f uploads/quarto-7.zip ]; then
+            rm -rf /tmp/quarto7
+            mkdir -p /tmp/quarto7
+            unzip -o uploads/quarto-7.zip -d /tmp/quarto7 >/dev/null
+            find /tmp/quarto7 -type f \( -iname '*.webp' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' \) -exec cp {} assets/quarto-7/ \;
+          fi
+          echo "Quarto 7 files:"
+          find assets/quarto-7 -maxdepth 1 -type f -printf '%f\n' | sort
       - name: Configure Pages
         uses: actions/configure-pages@v5
-
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
-
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
