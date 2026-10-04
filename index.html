@@ -476,20 +476,20 @@ ul{list-style:none}
 </style>
 
 <style>
-.room-photo-strip{margin:.9rem 0 1.1rem}
-.room-photo-main{display:block;width:100%;padding:0;border:0;background:none;border-radius:16px;overflow:hidden;cursor:zoom-in}
-.room-photo-main img{display:block!important;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;opacity:1!important;transition:transform .5s var(--ease)}
-.room-photo-main:hover img{transform:scale(1.03)}
-.room-photo-thumbs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.45rem;margin-top:.45rem;width:100%}
-.room-photo-thumbs button{display:block!important;min-width:0;min-height:0;padding:0;border:2px solid transparent;background:none;border-radius:9px;overflow:hidden;cursor:pointer;aspect-ratio:1}
-.room-photo-thumbs button.active{border-color:var(--gold)}
-.room-photo-thumbs img{display:block!important;width:100%;height:100%;object-fit:cover;opacity:1!important}
-.room-card.featured .room-media .ph{background:none}
-.room-card.featured .room-media .ph::before{display:none}
-.room-card.featured .room-media .ph img{display:block!important;position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;z-index:5;opacity:1!important}
-@media(max-width:520px){
-  .room-photo-thumbs{grid-template-columns:repeat(5,minmax(0,1fr));gap:.35rem}
-}
+.room-carousel{position:absolute;inset:0;overflow:hidden;background:#082f40;touch-action:pan-y;user-select:none}
+.room-carousel-track{display:flex;width:100%;height:100%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.room-carousel-track::-webkit-scrollbar{display:none}
+.room-slide{flex:0 0 100%;width:100%;height:100%;scroll-snap-align:start;position:relative;margin:0}
+.room-slide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.06),transparent 50%,rgba(0,0,0,.13));pointer-events:none}
+.room-slide img{display:block!important;width:100%;height:100%;max-width:none;object-fit:cover;opacity:1!important}
+.room-carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:6;width:42px;height:42px;border:1px solid rgba(255,255,255,.5);border-radius:50%;background:rgba(5,43,61,.55);backdrop-filter:blur(8px);color:#fff;font-size:30px;line-height:1;display:grid;place-items:center;cursor:pointer;transition:.25s}
+.room-carousel-btn:hover{background:rgba(5,43,61,.82);transform:translateY(-50%) scale(1.05)}
+.room-carousel-btn.prev{left:12px}.room-carousel-btn.next{right:12px}
+.room-carousel-dots{position:absolute;left:50%;bottom:13px;transform:translateX(-50%);z-index:7;display:flex;gap:6px;padding:6px 9px;border-radius:999px;background:rgba(5,43,61,.48);backdrop-filter:blur(8px)}
+.room-carousel-dots button{width:7px;height:7px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer;transition:.25s}
+.room-carousel-dots button.active{width:20px;border-radius:99px;background:#fff}
+.room-carousel-count{position:absolute;right:12px;bottom:12px;z-index:7;padding:.28rem .55rem;border-radius:999px;background:rgba(5,43,61,.55);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.06em;backdrop-filter:blur(8px)}
+@media(max-width:520px){.room-carousel-btn{width:38px;height:38px;font-size:27px}.room-carousel-btn.prev{left:9px}.room-carousel-btn.next{right:9px}}
 </style>
 </head>
 <body>
@@ -533,7 +533,7 @@ ul{list-style:none}
 <section class="hero">
   <div class="hero-media">
     <!-- Vídeo opcional: assets/video/hero.mp4. O gradiente permanece como fallback. -->
-    <video autoplay muted loop playsinline preload="metadata" poster="assets/quarto-7/q7-03.webp?v=2">
+    <video autoplay muted loop playsinline preload="metadata" poster="assets/quarto-7/q7-02.webp?v=3">
       
     </video>
   </div>
@@ -765,26 +765,25 @@ ul{list-style:none}
             <span class="badge badge-ocean">Vista para o mar</span>
             <span class="badge badge-gold">Varanda</span>
           </div>
-          <div class="ph" data-label="Foto do quarto 7 — assets/quarto-7.webp">
-            <img src="assets/quarto-7/q7-01.webp?v=2" alt="Quarto 7 — Suíte com varanda e vista para o mar da Pousada Costa Suítes" loading="eager" fetchpriority="high" decoding="async">
+          <div class="room-carousel" data-room-carousel aria-label="Galeria de fotos do Quarto 7">
+            <div class="room-carousel-track">
+              <figure class="room-slide"><img src="assets/quarto-7/q7-01.webp?v=3" alt="Quarto 7 — acomodação" loading="eager" fetchpriority="high" decoding="async"></figure>
+              <figure class="room-slide"><img src="assets/quarto-7/q7-02.webp?v=3" alt="Quarto 7 — vista para o mar e varanda" loading="eager" decoding="async"></figure>
+              <figure class="room-slide"><img src="assets/quarto-7/q7-03.webp?v=3" alt="Quarto 7 — varanda com rede" loading="eager" decoding="async"></figure>
+              <figure class="room-slide"><img src="assets/quarto-7/q7-04.webp?v=3" alt="Quarto 7 — varanda e acesso ao quarto" loading="eager" decoding="async"></figure>
+              <figure class="room-slide"><img src="assets/quarto-7/q7-05.webp?v=3" alt="Quarto 7 — porta e vista para a varanda" loading="eager" decoding="async"></figure>
+              <figure class="room-slide"><img src="assets/quarto-7/q7-06.webp?v=3" alt="Quarto 7 — interior e vista da varanda" loading="eager" decoding="async"></figure>
+            </div>
+            <button class="room-carousel-btn prev" type="button" aria-label="Foto anterior">‹</button>
+            <button class="room-carousel-btn next" type="button" aria-label="Próxima foto">›</button>
+            <div class="room-carousel-dots" aria-label="Selecionar foto"></div>
+            <div class="room-carousel-count" aria-live="polite">1 / 6</div>
           </div>
         </div>
         <div class="room-body">
           <span class="room-num">Quarto Nº 7</span>
           <h3 class="room-name">Suíte com Varanda e Vista para o Mar</h3>
           <p class="room-desc">Varanda com vista para o mar e opção de configuração tripla — espaço e paisagem em um só lugar.</p>
-          <div class="room-photo-strip" aria-label="Fotos do Quarto 7">
-            <button type="button" class="room-photo-main" data-room-photo="assets/quarto-7/q7-01.webp?v=2" aria-label="Ampliar foto do Quarto 7">
-              <img src="assets/quarto-7/q7-01.webp?v=2" alt="Quarto 7 — acomodação" loading="eager" decoding="async">
-            </button>
-            <div class="room-photo-thumbs">
-              <button type="button" data-room-photo="assets/quarto-7/q7-02.webp?v=2" aria-label="Ver foto 2"><img src="assets/quarto-7/q7-02.webp?v=2" alt="Quarto 7 — foto 2" loading="eager" decoding="async"></button>
-              <button type="button" data-room-photo="assets/quarto-7/q7-03.webp?v=2" aria-label="Ver foto 3"><img src="assets/quarto-7/q7-03.webp?v=2" alt="Quarto 7 — foto 3" loading="eager" decoding="async"></button>
-              <button type="button" data-room-photo="assets/quarto-7/q7-04.webp?v=2" aria-label="Ver foto 4"><img src="assets/quarto-7/q7-04.webp?v=2" alt="Quarto 7 — foto 4" loading="eager" decoding="async"></button>
-              <button type="button" data-room-photo="assets/quarto-7/q7-05.webp?v=2" aria-label="Ver foto 5"><img src="assets/quarto-7/q7-05.webp?v=2" alt="Quarto 7 — foto 5" loading="eager" decoding="async"></button>
-              <button type="button" data-room-photo="assets/quarto-7/q7-06.webp?v=2" aria-label="Ver foto 6"><img src="assets/quarto-7/q7-06.webp?v=2" alt="Quarto 7 — foto 6" loading="eager" decoding="async"></button>
-            </div>
-          </div>
           <ul class="room-config"><li>Opção de configuração triplo</li></ul>
           <ul class="amen"><li>Ar-condicionado</li><li>Chuveiro eletrônico</li><li>Frigobar</li><li>Wi-Fi</li><li>Televisão</li></ul>
           <div class="room-foot">
@@ -1060,21 +1059,28 @@ ul{list-style:none}
 </script>
 <script>
 (function(){
-  var main=document.querySelector('.room-photo-main');
-  var mainImg=main?.querySelector('img');
-  if(!main||!mainImg)return;
-  document.querySelectorAll('[data-room-photo]').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var src=btn.getAttribute('data-room-photo');
-      if(!src)return;
-      if(btn===main){return;}
-      mainImg.src=src;
-      document.querySelectorAll('.room-photo-thumbs button').forEach(function(b){b.classList.remove('active')});
-      btn.classList.add('active');
+  document.querySelectorAll('[data-room-carousel]').forEach(function(carousel){
+    var track=carousel.querySelector('.room-carousel-track');
+    var slides=Array.prototype.slice.call(carousel.querySelectorAll('.room-slide'));
+    var prev=carousel.querySelector('.room-carousel-btn.prev');
+    var next=carousel.querySelector('.room-carousel-btn.next');
+    var dots=carousel.querySelector('.room-carousel-dots');
+    var count=carousel.querySelector('.room-carousel-count');
+    if(!track||!slides.length)return;
+    slides.forEach(function(_,i){
+      var d=document.createElement('button'); d.type='button'; d.setAttribute('aria-label','Ir para foto '+(i+1));
+      d.addEventListener('click',function(){track.scrollTo({left:i*track.clientWidth,behavior:'smooth'});});
+      dots.appendChild(d);
     });
+    var dotButtons=Array.prototype.slice.call(dots.children);
+    function idx(){return Math.max(0,Math.min(slides.length-1,Math.round(track.scrollLeft/Math.max(1,track.clientWidth))));}
+    function update(){var i=idx();dotButtons.forEach(function(d,n){d.classList.toggle('active',n===i)});count.textContent=(i+1)+' / '+slides.length;}
+    prev.addEventListener('click',function(){track.scrollTo({left:Math.max(0,idx()-1)*track.clientWidth,behavior:'smooth'});});
+    next.addEventListener('click',function(){track.scrollTo({left:Math.min(slides.length-1,idx()+1)*track.clientWidth,behavior:'smooth'});});
+    track.addEventListener('scroll',function(){requestAnimationFrame(update)},{passive:true});
+    window.addEventListener('resize',update);
+    update();
   });
-  var first=document.querySelector('.room-photo-thumbs button');
-  if(first)first.classList.add('active');
 })();
 </script>
 </body>
