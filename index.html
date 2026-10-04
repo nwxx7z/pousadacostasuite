@@ -161,14 +161,9 @@ ul{list-style:none}
   color:#fff;overflow:hidden;
   background:linear-gradient(160deg,var(--deep) 0%,var(--ocean) 55%,var(--ocean-2) 100%);
 }
-.hero-media{position:absolute;inset:0;z-index:0}
-.hero-media video{
-  width:100%;height:100%;object-fit:cover;
-  /* fallback elegante enquanto o vídeo real não é enviado */
-  background:
-    radial-gradient(120% 90% at 80% 10%, rgba(242,177,53,.35), transparent 55%),
-    linear-gradient(160deg,var(--deep),var(--ocean) 60%,var(--light));
-}
+.hero-media{position:absolute;inset:0;z-index:0;background:var(--deep)}
+.hero-media picture,.hero-media img{display:block;width:100%;height:100%;max-width:none}
+.hero-media img{object-fit:cover;object-position:center 52%;filter:saturate(1.04) contrast(1.03);transform:scale(1.01)}
 .hero-overlay{
   position:absolute;inset:0;z-index:1;
   background:linear-gradient(180deg,rgba(5,43,61,.55) 0%,rgba(5,43,61,.25) 45%,rgba(5,43,61,.75) 100%);
@@ -477,13 +472,15 @@ ul{list-style:none}
 
 <style>
 .room-carousel{position:absolute;inset:0;overflow:hidden;background:#082f40;touch-action:pan-y;user-select:none}
-.room-carousel-track{display:flex;width:100%;height:100%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.room-carousel-track{display:flex;width:100%;height:100%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
 .room-carousel-track::-webkit-scrollbar{display:none}
-.room-slide{flex:0 0 100%;width:100%;height:100%;scroll-snap-align:start;position:relative;margin:0}
-.room-slide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.06),transparent 50%,rgba(0,0,0,.13));pointer-events:none}
-.room-slide img{display:block!important;width:100%;height:100%;max-width:none;object-fit:cover;opacity:1!important}
+.room-slide{flex:0 0 100%;width:100%;height:100%;min-width:100%;scroll-snap-align:start;position:relative;margin:0;padding:0;overflow:hidden;background:#082f40}
+.room-slide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.03),transparent 50%,rgba(0,0,0,.16));pointer-events:none}
+.room-slide img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover;object-position:center;opacity:1!important;transform:none!important}
 .room-carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:6;width:42px;height:42px;border:1px solid rgba(255,255,255,.5);border-radius:50%;background:rgba(5,43,61,.55);backdrop-filter:blur(8px);color:#fff;font-size:30px;line-height:1;display:grid;place-items:center;cursor:pointer;transition:.25s}
 .room-carousel-btn:hover{background:rgba(5,43,61,.82);transform:translateY(-50%) scale(1.05)}
+.room-carousel-btn:disabled{opacity:.35;cursor:default}
+.room-carousel-btn:disabled:hover{background:rgba(5,43,61,.55);transform:translateY(-50%)}
 .room-carousel-btn.prev{left:12px}.room-carousel-btn.next{right:12px}
 .room-carousel-dots{position:absolute;left:50%;bottom:13px;transform:translateX(-50%);z-index:7;display:flex;gap:6px;padding:6px 9px;border-radius:999px;background:rgba(5,43,61,.48);backdrop-filter:blur(8px)}
 .room-carousel-dots button{width:7px;height:7px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer;transition:.25s}
@@ -532,10 +529,13 @@ ul{list-style:none}
 <!-- ================= HERO ================= -->
 <section class="hero">
   <div class="hero-media">
-    <!-- Vídeo opcional: assets/video/hero.mp4. O gradiente permanece como fallback. -->
-    <video autoplay muted loop playsinline preload="metadata" poster="assets/quarto-7/q7-02.webp?v=3">
-      
-    </video>
+    <picture>
+      <source media="(min-width:900px)" srcset="assets/quarto-7/q7-03.webp?v=4">
+      <img src="assets/quarto-7/q7-02.webp?v=4"
+        alt="Vista para o mar da Pousada Costa Suítes"
+        fetchpriority="high" decoding="async"
+        onerror="this.onerror=null;this.src='assets/quarto-7/q7-03.webp?v=4'">
+    </picture>
   </div>
   <div class="hero-overlay"></div>
   <div class="sun-glow" aria-hidden="true"></div>
@@ -767,12 +767,12 @@ ul{list-style:none}
           </div>
           <div class="room-carousel" data-room-carousel aria-label="Galeria de fotos do Quarto 7">
             <div class="room-carousel-track">
-              <figure class="room-slide"><img src="assets/quarto-7/q7-01.webp?v=3" alt="Quarto 7 — acomodação" loading="eager" fetchpriority="high" decoding="async"></figure>
-              <figure class="room-slide"><img src="assets/quarto-7/q7-02.webp?v=3" alt="Quarto 7 — vista para o mar e varanda" loading="eager" decoding="async"></figure>
-              <figure class="room-slide"><img src="assets/quarto-7/q7-03.webp?v=3" alt="Quarto 7 — varanda com rede" loading="eager" decoding="async"></figure>
-              <figure class="room-slide"><img src="assets/quarto-7/q7-04.webp?v=3" alt="Quarto 7 — varanda e acesso ao quarto" loading="eager" decoding="async"></figure>
-              <figure class="room-slide"><img src="assets/quarto-7/q7-05.webp?v=3" alt="Quarto 7 — porta e vista para a varanda" loading="eager" decoding="async"></figure>
-              <figure class="room-slide"><img src="assets/quarto-7/q7-06.webp?v=3" alt="Quarto 7 — interior e vista da varanda" loading="eager" decoding="async"></figure>
+              <figure class="room-slide"><img src="assets/quarto-7/q7-01.webp?v=3" alt="Quarto 7 — acomodação" loading="eager" fetchpriority="high" decoding="async" onerror="this.onerror=null;this.src='assets/quarto-7.webp?v=4'"></figure>
+              <figure class="room-slide"><img src="assets/quarto-7/q7-02.webp?v=3" alt="Quarto 7 — vista para o mar e varanda" loading="eager" decoding="async" onerror="this.onerror=null;this.src='assets/quarto-7.webp?v=4'"></figure>
+              <figure class="room-slide"><img src="assets/quarto-7/q7-03.webp?v=3" alt="Quarto 7 — varanda com rede" loading="eager" decoding="async" onerror="this.onerror=null;this.src='assets/quarto-7.webp?v=4'"></figure>
+              <figure class="room-slide"><img src="assets/quarto-7/q7-04.webp?v=3" alt="Quarto 7 — varanda e acesso ao quarto" loading="eager" decoding="async" onerror="this.onerror=null;this.src='assets/quarto-7.webp?v=4'"></figure>
+              <figure class="room-slide"><img src="assets/quarto-7/q7-05.webp?v=3" alt="Quarto 7 — porta e vista para a varanda" loading="eager" decoding="async" onerror="this.onerror=null;this.src='assets/quarto-7.webp?v=4'"></figure>
+              <figure class="room-slide"><img src="assets/quarto-7/q7-06.webp?v=3" alt="Quarto 7 — interior e vista da varanda" loading="eager" decoding="async" onerror="this.onerror=null;this.src='assets/quarto-7.webp?v=4'"></figure>
             </div>
             <button class="room-carousel-btn prev" type="button" aria-label="Foto anterior">‹</button>
             <button class="room-carousel-btn next" type="button" aria-label="Próxima foto">›</button>
@@ -1067,18 +1067,33 @@ ul{list-style:none}
     var dots=carousel.querySelector('.room-carousel-dots');
     var count=carousel.querySelector('.room-carousel-count');
     if(!track||!slides.length)return;
+    function goTo(i){
+      i=Math.max(0,Math.min(slides.length-1,i));
+      track.scrollTo({left:i*track.clientWidth,behavior:'smooth'});
+    }
     slides.forEach(function(_,i){
-      var d=document.createElement('button'); d.type='button'; d.setAttribute('aria-label','Ir para foto '+(i+1));
-      d.addEventListener('click',function(){track.scrollTo({left:i*track.clientWidth,behavior:'smooth'});});
+      var d=document.createElement('button'); d.type='button';
+      d.setAttribute('aria-label','Ir para foto '+(i+1));
+      d.addEventListener('click',function(){goTo(i);});
       dots.appendChild(d);
     });
     var dotButtons=Array.prototype.slice.call(dots.children);
     function idx(){return Math.max(0,Math.min(slides.length-1,Math.round(track.scrollLeft/Math.max(1,track.clientWidth))));}
-    function update(){var i=idx();dotButtons.forEach(function(d,n){d.classList.toggle('active',n===i)});count.textContent=(i+1)+' / '+slides.length;}
-    prev.addEventListener('click',function(){track.scrollTo({left:Math.max(0,idx()-1)*track.clientWidth,behavior:'smooth'});});
-    next.addEventListener('click',function(){track.scrollTo({left:Math.min(slides.length-1,idx()+1)*track.clientWidth,behavior:'smooth'});});
-    track.addEventListener('scroll',function(){requestAnimationFrame(update)},{passive:true});
-    window.addEventListener('resize',update);
+    function update(){
+      var i=idx();
+      dotButtons.forEach(function(d,n){d.classList.toggle('active',n===i);});
+      count.textContent=(i+1)+' / '+slides.length;
+      prev.disabled=i===0; next.disabled=i===slides.length-1;
+    }
+    prev.addEventListener('click',function(){goTo(idx()-1);});
+    next.addEventListener('click',function(){goTo(idx()+1);});
+    track.addEventListener('scroll',function(){requestAnimationFrame(update);},{passive:true});
+    window.addEventListener('resize',function(){requestAnimationFrame(update);});
+    carousel.addEventListener('keydown',function(e){
+      if(e.key==='ArrowLeft'){e.preventDefault();goTo(idx()-1);}
+      if(e.key==='ArrowRight'){e.preventDefault();goTo(idx()+1);}
+    });
+    carousel.setAttribute('tabindex','0');
     update();
   });
 })();
