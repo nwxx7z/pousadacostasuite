@@ -514,7 +514,7 @@ ul{list-style:none}
 .room-carousel-track::-webkit-scrollbar{display:none}
 .room-slide{flex:0 0 100%;width:100%;height:100%;min-width:100%;scroll-snap-align:start;position:relative;margin:0;padding:0;overflow:hidden;background:#082f40}
 .room-slide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.03),transparent 50%,rgba(0,0,0,.16));pointer-events:none}
-.room-slide img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover;object-position:center;opacity:1!important;transform:none!important}
+.room-slide img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover;object-position:center;opacity:1!important;transform:none!important}.room-slide video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#082f40}
 .room-carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:6;width:42px;height:42px;border:1px solid rgba(255,255,255,.5);border-radius:50%;background:rgba(5,43,61,.55);backdrop-filter:blur(8px);color:#fff;font-size:30px;line-height:1;display:grid;place-items:center;cursor:pointer;transition:.25s}
 .room-carousel-btn:hover{background:rgba(5,43,61,.82);transform:translateY(-50%) scale(1.05)}
 .room-carousel-btn:disabled{opacity:.35;cursor:default}
@@ -813,11 +813,16 @@ ul{list-style:none}
               <figure class="room-slide"><img src="assets/quarto-5/fotos/quarto-5-07.jpg" alt="Quarto 5 — foto 7" loading="lazy" decoding="async"></figure>
               <figure class="room-slide"><img src="assets/quarto-5/fotos/quarto-5-08.jpg" alt="Quarto 5 — foto 8" loading="lazy" decoding="async"></figure>
               <figure class="room-slide"><img src="assets/quarto-5/fotos/quarto-5-09.jpg" alt="Quarto 5 — foto 9" loading="lazy" decoding="async"></figure>
+              <figure class="room-slide room-video-slide">
+                <video controls muted loop playsinline preload="metadata" poster="assets/quarto-5/fotos/quarto-5-01.jpg">
+                  <source src="assets/quarto-5/video/quarto-5.mp4" type="video/mp4">
+                </video>
+              </figure>
             </div>
             <button class="room-carousel-btn prev" type="button" aria-label="Foto anterior">‹</button>
             <button class="room-carousel-btn next" type="button" aria-label="Próxima foto">›</button>
             <div class="room-carousel-dots" aria-label="Selecionar foto"></div>
-            <div class="room-carousel-count" aria-live="polite">1 / 9</div>
+            <div class="room-carousel-count" aria-live="polite">1 / 10</div>
           </div>
         </div>
         <div class="room-body">
@@ -945,9 +950,9 @@ ul{list-style:none}
     </div>
 
     <div class="video-spot reveal">
-      <!-- VÍDEO REAL DO QUARTO 5 -->
-      <video controls muted loop playsinline preload="metadata" poster="assets/quarto-5/fotos/quarto-5-01.jpg">
-        <source src="assets/quarto-5/video/quarto-5.mp4" type="video/mp4">
+      <!-- VÍDEO DA POUSADA — arquivo separado do vídeo do Quarto 5 -->
+      <video controls muted loop playsinline preload="metadata">
+        <source src="assets/video/pousada.mp4" type="video/mp4">
       </video>
       <span class="video-caption">Um tour pela pousada</span>
     </div>
