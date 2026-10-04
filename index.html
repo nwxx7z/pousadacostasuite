@@ -42,7 +42,7 @@
   --font-body:'Inter', system-ui, -apple-system, sans-serif;
   --ease:cubic-bezier(.22,.8,.28,1);
 }
-*{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box;min-width:0}
 html{scroll-behavior:smooth}
 body{
   font-family:var(--font-body);
@@ -243,8 +243,8 @@ ul{list-style:none}
   background:linear-gradient(135deg,var(--ocean),var(--ocean-2));color:#fff;
 }
 .feat-ic svg{width:22px;height:22px}
-.feat strong{display:block;font-size:.95rem;color:var(--deep)}
-.feat span{font-size:.83rem;color:var(--muted)}
+.feat strong{display:block;font-size:.95rem;color:var(--deep);overflow-wrap:anywhere}
+.feat span{font-size:.83rem;color:var(--muted);overflow-wrap:anywhere;word-break:break-word}
 
 /* ---------- Quartos ---------- */
 .rooms{background:linear-gradient(180deg,var(--sand) 0%,var(--white) 100%)}
@@ -350,6 +350,16 @@ ul{list-style:none}
 .amenities{background:var(--white)}
 .amen-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;margin-top:3rem}
 @media(min-width:680px){.amen-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- Proteção contra overflow horizontal ---------- */
+.about-grid > *, .about-feats > *, .rooms-grid > *, .amen-grid > *, .location-grid > *, .room-card, .feat, .amen-card{min-width:0;max-width:100%}
+.about-feats, .amen-grid, .rooms-grid{width:100%;min-width:0}
+@media(max-width:680px){
+  .about-feats{grid-template-columns:1fr}
+  .feat{width:100%}
+  .amen-grid{grid-template-columns:1fr 1fr}
+  .amen-card{width:100%;overflow:hidden}
+}
 @media(min-width:1000px){.amen-grid{grid-template-columns:repeat(6,1fr)}}
 .amen-card{
   background:var(--sand);border-radius:18px;padding:1.8rem 1.2rem;text-align:center;
