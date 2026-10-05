@@ -422,7 +422,7 @@ ul{list-style:none}
 .loc-info{display:flex;flex-direction:column;gap:1.4rem;justify-content:center}
 .loc-item{display:flex;gap:1rem;align-items:flex-start}
 .loc-item .ic{width:46px;height:46px;flex:none;border-radius:14px;background:var(--sand);display:grid;place-items:center;color:var(--ocean)}
-.loc-item .ic svg{width:24px;height:24px}
+.loc-item .ic svg{width:24px;height:24px}.loc-map-link{display:block;flex:none;text-decoration:none}.loc-map-link:hover .ic{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.1)}.loc-map-link .ic{transition:transform .2s ease,box-shadow .2s ease}
 .loc-item strong{display:block;color:var(--deep);font-size:1rem}
 .loc-item p{font-size:.92rem;color:var(--muted)}
 .map-box{border-radius:var(--radius);overflow:hidden;min-height:360px;position:relative;box-shadow:var(--shadow-soft)}
@@ -1006,11 +1006,12 @@ ul{list-style:none}
     <div class="location-grid">
       <div class="loc-info">
         <div class="loc-item reveal">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <a class="loc-map-link" href="https://www.google.com/maps/dir/?api=1&destination=Ruas+das+Marisqueiras%2C+S%C3%A3o+Bento%2C+Maragogi%2C+Alagoas" target="_blank" rel="noopener" aria-label="Abrir rota para a Pousada Costa Suítes no Google Maps" title="Abrir rota no Google Maps">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          </a>
           <div>
             <strong>Endereço</strong>
-            <!-- PREENCHER: endereço completo da pousada -->
-            <p>Rua, número — Bairro<br>Cidade / UF — CEP</p>
+            <p>Ruas das Marisqueiras<br>São Bento, Maragogi — Alagoas</p>
           </div>
         </div>
         <div class="loc-item reveal d1">
@@ -1027,11 +1028,11 @@ ul{list-style:none}
             <p>+55 82 98860-7037 — WhatsApp e ligações</p>
           </div>
         </div>
-        <!-- PREENCHER: trocar a query pelo endereço exato após preencher -->
-        <a class="btn btn-deep reveal d3" style="align-self:flex-start" href="https://www.google.com/maps/search/?api=1&query=Pousada+Costa+Su%C3%ADtes" target="_blank" rel="noopener">Como chegar</a>
+        
+        <a class="btn btn-deep reveal d3" style="align-self:flex-start" href="https://www.google.com/maps/dir/?api=1&destination=Ruas+das+Marisqueiras%2C+S%C3%A3o+Bento%2C+Maragogi%2C+Alagoas" target="_blank" rel="noopener">Como chegar</a>
       </div>
       <div class="map-box reveal d1">
-        <!-- PREENCHER: descomentar e inserir o iframe do Google Maps com o endereço real
+        <!-- Mapa da localização — o botão abre diretamente a rota no Google Maps
         <iframe src="https://www.google.com/maps?q=ENDERECO_AQUI&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa da Pousada Costa Suítes"></iframe>
         -->
         <div class="ph" data-label="Mapa — insira o iframe do Google Maps com o endereço real"></div>
