@@ -13,7 +13,18 @@ O layout está preparado para receber os materiais reais do proprietário. Quand
 - `/assets/galeria-01.webp` etc.
 - vídeos otimizados em `/assets/video/`
 
-Os preços permanecem em **R$ 000,00** e o endereço permanece como placeholder até serem fornecidos.
+## Reservas e disponibilidade
+
+O site usa PostgreSQL/Neon através da variável de ambiente `DATABASE_URL`.
+
+O painel administrativo fica em `/admin` e permite:
+
+- gerenciar preços por período e quarto;
+- bloquear e desbloquear períodos;
+- consultar a disponibilidade dos quartos;
+- manter os dados de reservas separados do conteúdo estático do site.
+
+As tabelas são inicializadas automaticamente pela API administrativa quando necessário.
 
 ## WhatsApp
 
