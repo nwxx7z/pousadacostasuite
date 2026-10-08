@@ -288,6 +288,18 @@ ul{list-style:none}
 .price strong{font-family:var(--font-display);font-size:1.35rem;color:var(--deep)}
 .room-foot .btn{padding:.75rem 1.2rem;font-size:.8rem}
 
+/* ---------- Tarifas ---------- */
+.rates{background:var(--white)}
+.rates-grid{display:grid;grid-template-columns:1fr;gap:1.4rem;margin-top:3rem;max-width:900px;margin-inline:auto}
+@media(min-width:760px){.rates-grid{grid-template-columns:1fr 1.25fr}}
+.rate-card{background:var(--sand);border:1px solid rgba(5,43,61,.07);border-radius:var(--radius);padding:1.6rem;box-shadow:var(--shadow-soft);display:flex;flex-direction:column;gap:.5rem}
+.rate-card.featured{border:1.5px solid rgba(242,177,53,.55)}
+.rate-card span{font-weight:700;color:var(--ocean);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+.rate-card strong{font-family:var(--font-display);font-size:1.8rem;color:var(--deep);display:block}
+.rate-card small{display:block;color:var(--muted);font-size:.82rem}
+.rate-card > div{padding:.65rem 0;border-top:1px dashed rgba(5,43,61,.15)}
+.rate-card > div:first-of-type{border-top:0}
+
 /* ---------- Galeria ---------- */
 .gallery{background:var(--deep);color:#fff}
 .gallery .section-title{color:#fff}
@@ -685,7 +697,7 @@ ul{list-style:none}
           <p class="room-desc">Quarto de casal comum, ideal para um descanso a dois.</p>
           <ul class="amen"><li>Ar-condicionado</li><li>Chuveiro eletrônico</li><li>Frigobar</li><li>Wi-Fi</li><li>Televisão</li></ul>
           <div class="room-foot">
-            <div class="price"><small>Diária a partir de</small><strong>R$ 000,00</strong></div>
+            <div class="price"><small>Diária a partir de</small><strong>R$ 144,00</strong></div>
             <a class="btn btn-whatsapp" href="https://wa.me/5582988607037?text=Ol%C3%A1%2C%20gostaria%20de%20reservar%20o%20quarto%20N%C2%BA%201%2C%20poderia%20me%20informar%20que%20dia%20estar%C3%A1%20dispon%C3%ADvel%3F" target="_blank" rel="noopener">RESERVAR QUARTO 1</a>
           </div>
         </div>
@@ -715,7 +727,7 @@ ul{list-style:none}
           <p class="room-desc">Quarto de casal comum, ideal para um descanso a dois.</p>
           <ul class="amen"><li>Ar-condicionado</li><li>Chuveiro eletrônico</li><li>Frigobar</li><li>Wi-Fi</li><li>Televisão</li></ul>
           <div class="room-foot">
-            <div class="price"><small>Diária a partir de</small><strong>R$ 000,00</strong></div>
+            <div class="price"><small>Diária a partir de</small><strong>R$ 144,00</strong></div>
             <a class="btn btn-whatsapp" href="https://wa.me/5582988607037?text=Ol%C3%A1%2C%20gostaria%20de%20reservar%20o%20quarto%20N%C2%BA%202%2C%20poderia%20me%20informar%20que%20dia%20estar%C3%A1%20dispon%C3%ADvel%3F" target="_blank" rel="noopener">RESERVAR QUARTO 2</a>
           </div>
         </div>
@@ -747,7 +759,7 @@ ul{list-style:none}
           <p class="room-desc">Quarto de casal comum, ideal para um descanso a dois.</p>
           <ul class="amen"><li>Ar-condicionado</li><li>Chuveiro eletrônico</li><li>Frigobar</li><li>Wi-Fi</li><li>Televisão</li></ul>
           <div class="room-foot">
-            <div class="price"><small>Diária a partir de</small><strong>R$ 000,00</strong></div>
+            <div class="price"><small>Diária a partir de</small><strong>R$ 144,00</strong></div>
             <a class="btn btn-whatsapp" href="https://wa.me/5582988607037?text=Ol%C3%A1%2C%20gostaria%20de%20reservar%20o%20quarto%20N%C2%BA%203%2C%20poderia%20me%20informar%20que%20dia%20estar%C3%A1%20dispon%C3%ADvel%3F" target="_blank" rel="noopener">RESERVAR QUARTO 3</a>
           </div>
         </div>
@@ -789,7 +801,7 @@ ul{list-style:none}
           </ul>
           <ul class="amen"><li>Ar-condicionado</li><li>Chuveiro eletrônico</li><li>Frigobar</li><li>Wi-Fi</li><li>Televisão</li></ul>
           <div class="room-foot">
-            <div class="price"><small>Diária a partir de</small><strong>R$ 000,00</strong></div>
+            <div class="price"><small>Diária a partir de</small><strong>R$ 252,00</strong></div>
             <a class="btn btn-whatsapp" href="https://wa.me/5582988607037?text=Ol%C3%A1%2C%20gostaria%20de%20reservar%20o%20quarto%20N%C2%BA%204%2C%20poderia%20me%20informar%20que%20dia%20estar%C3%A1%20dispon%C3%ADvel%3F" target="_blank" rel="noopener">RESERVAR QUARTO 4</a>
           </div>
         </div>
@@ -925,6 +937,21 @@ ul{list-style:none}
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.8 1.3 1.7 2.1 3 2.7.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 .9c.3.2.5.3.6.4 0 .1 0 .6-.2 1.1Z"/></svg>
       CONSULTAR DISPONIBILIDADE
     </a>
+  </div>
+</section>
+
+<!-- ================= TARIFAS ================= -->
+<section class="section rates" id="tarifas">
+  <div class="container">
+    <div class="center">
+      <span class="eyebrow reveal">Tarifas</span>
+      <h2 class="section-title reveal d1">Valores das diárias</h2>
+      <p class="section-sub reveal d2">Consulte os valores definidos para cada período. Os preços abaixo são referentes à diária.</p>
+    </div>
+    <div class="rates-grid">
+      <div class="rate-card reveal"><span>Quartos 1, 2 e 3</span><strong>R$ 144,00</strong><small>08/10/2026 a 22/12/2026</small></div>
+      <div class="rate-card featured reveal d1"><span>Quarto Nº 4</span><div><strong>R$ 342,00</strong><small>09/10 a 12/10</small></div><div><strong>R$ 252,00</strong><small>13/10 a 30/10</small></div><div><strong>R$ 396,00</strong><small>31/10</small></div></div>
+    </div>
   </div>
 </section>
 
