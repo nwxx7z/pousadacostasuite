@@ -955,6 +955,32 @@ ul{list-style:none}
   </div>
 </section>
 
+<!-- ================= CONSULTA DE DISPONIBILIDADE ================= -->
+<section class="section" id="consulta" style="background:var(--sand)">
+  <div class="container">
+    <div class="center">
+      <span class="eyebrow reveal">Disponibilidade</span>
+      <h2 class="section-title reveal d1">Consulte suas datas</h2>
+      <p class="section-sub reveal d2">Escolha o quarto e o período. O sistema verifica automaticamente bloqueios e calcula o valor das diárias.</p>
+    </div>
+    <div class="reveal" style="max-width:850px;margin:2.5rem auto 0;background:#fff;border-radius:22px;padding:clamp(1.2rem,4vw,2rem);box-shadow:var(--shadow-soft)">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
+        <label style="display:flex;flex-direction:column;gap:.4rem;font-weight:600;color:var(--deep)">Quarto
+          <select id="availabilityRoom" style="padding:.85rem;border:1px solid #ccd8dc;border-radius:10px;background:#fff"></select>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:.4rem;font-weight:600;color:var(--deep)">Entrada
+          <input id="availabilityStart" type="date" style="padding:.85rem;border:1px solid #ccd8dc;border-radius:10px">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:.4rem;font-weight:600;color:var(--deep)">Saída
+          <input id="availabilityEnd" type="date" style="padding:.85rem;border:1px solid #ccd8dc;border-radius:10px">
+        </label>
+      </div>
+      <button id="checkAvailability" class="btn btn-deep" style="margin-top:1rem">VERIFICAR DISPONIBILIDADE</button>
+      <div id="availabilityResult" style="margin-top:1rem"></div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= GALERIA ================= -->
 <section class="section gallery" id="galeria">
   <div class="container">
@@ -1242,6 +1268,36 @@ ul{list-style:none}
     carousel.setAttribute('tabindex','0');
     update();
   });
+})();
+</script>
+<script>
+(function(){
+  const apiUrl='/api/admin';
+  let cfg=null;
+  const money=v=>Number(v).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+  const daysBetween=(a,b)=>Math.round((new Date(b+'T12:00:00')-new Date(a+'T12:00:00'))/86400000);
+  const getPrice=(roomId,date)=>{const p=(cfg.prices||[]).find(x=>x.room_id===roomId&&date>=x.start_date&&date<=x.end_date);return p?Number(p.price):null};
+  const blocked=(roomId,date)=> (cfg.blocks||[]).some(x=>x.room_id===roomId&&date>=x.start_date&&date<=x.end_date);
+  async function load(){
+    try{const r=await fetch(apiUrl);if(!r.ok)return;cfg=await r.json();
+      const sel=document.getElementById('availabilityRoom');if(sel){sel.innerHTML=cfg.rooms.map(r=>'<option value="'+r.id+'">Quarto '+r.number+'</option>').join('');}
+      document.querySelectorAll('.room-card').forEach(card=>{
+        const n=Number((card.querySelector('.room-num')?.textContent||'').match(/\d+/)?.[0]);const room=cfg.rooms.find(x=>x.number===n);const priceEl=card.querySelector('.price strong');
+        if(room&&priceEl){const p=getPrice(room.id,new Date().toISOString().slice(0,10));if(p!==null)priceEl.textContent=money(p)}
+      });
+    }catch(e){}
+  }
+  const btn=document.getElementById('checkAvailability');
+  if(btn)btn.addEventListener('click',function(){
+    const roomId=Number(document.getElementById('availabilityRoom').value),start=document.getElementById('availabilityStart').value,end=document.getElementById('availabilityEnd').value,out=document.getElementById('availabilityResult');
+    if(!start||!end||end<=start){out.innerHTML='<div style="padding:1rem;border-radius:12px;background:#fff1f0;color:#9b2118">Informe uma entrada e uma saída válidas.</div>';return}
+    const nights=daysBetween(start,end),dates=[];for(let i=0;i<nights;i++){const d=new Date(start+'T12:00:00');d.setDate(d.getDate()+i);dates.push(d.toISOString().slice(0,10))}
+    const bad=dates.find(d=>blocked(roomId,d));if(bad){out.innerHTML='<div style="padding:1rem;border-radius:12px;background:#fff1f0;color:#9b2118"><strong>Indisponível</strong><br>O quarto está bloqueado em '+new Date(bad+'T12:00:00').toLocaleDateString('pt-BR')+'.</div>';return}
+    const prices=dates.map(d=>getPrice(roomId,d));if(prices.some(p=>p===null)){out.innerHTML='<div style="padding:1rem;border-radius:12px;background:#fff8e6;color:#765400"><strong>Consulte a pousada</strong><br>Não há tarifa cadastrada para todas as noites selecionadas.</div>';return}
+    const total=prices.reduce((a,b)=>a+b,0),room=cfg.rooms.find(x=>x.id===roomId);
+    out.innerHTML='<div style="padding:1rem;border-radius:12px;background:#eef9f1;color:#176b35"><strong>✓ Disponível</strong><br>Quarto '+room.number+' · '+nights+' diária(s) · '+money(total)+'<br><a class="btn btn-whatsapp" style="margin-top:.8rem;padding:.7rem 1rem;font-size:.8rem" target="_blank" rel="noopener" href="https://wa.me/5582988607037?text='+encodeURIComponent('Olá! Gostaria de reservar o Quarto Nº '+room.number+' de '+new Date(start+'T12:00:00').toLocaleDateString('pt-BR')+' até '+new Date(end+'T12:00:00').toLocaleDateString('pt-BR')+'. Valor calculado: '+money(total))+ '">RESERVAR PELO WHATSAPP</a></div>';
+  });
+  load();
 })();
 </script>
 </body>
