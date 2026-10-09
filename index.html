@@ -481,6 +481,80 @@ ul{list-style:none}
   html{scroll-behavior:auto}
   .reveal,.g-item{opacity:1!important;transform:none!important}
 }
+
+/* ---------- Formulário de disponibilidade responsivo ---------- */
+.availability-form{
+  display:grid;
+  grid-template-columns:1.05fr .9fr 1fr 1fr;
+  gap:1rem;
+  align-items:end;
+}
+.availability-form label{
+  display:flex;
+  flex-direction:column;
+  gap:.5rem;
+  min-width:0;
+  font-size:.92rem;
+  font-weight:700;
+  color:var(--deep);
+}
+.availability-form select,
+.availability-form input{
+  width:100%;
+  min-width:0;
+  box-sizing:border-box;
+  height:52px;
+  padding:.8rem .9rem;
+  border:1px solid #ccd8dc;
+  border-radius:12px;
+  background:#fff;
+  color:var(--deep);
+  font:inherit;
+  font-weight:500;
+  outline:none;
+  transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;
+}
+.availability-form select:focus,
+.availability-form input:focus{
+  border-color:var(--ocean);
+  box-shadow:0 0 0 3px rgba(14,111,140,.12);
+}
+#checkAvailability{
+  width:100%;
+  min-height:54px;
+  border-radius:14px;
+  font-size:.9rem;
+  letter-spacing:.03em;
+}
+@media(max-width:900px){
+  .availability-form{
+    grid-template-columns:1fr 1fr;
+  }
+}
+@media(max-width:600px){
+  .availability-box{
+    padding:1.1rem!important;
+    border-radius:20px!important;
+    margin-top:1.8rem!important;
+  }
+  .availability-form{
+    grid-template-columns:1fr;
+    gap:.9rem;
+  }
+  .availability-form label{
+    font-size:.9rem;
+  }
+  .availability-form select,
+  .availability-form input{
+    height:52px;
+    font-size:1rem;
+  }
+  #checkAvailability{
+    margin-top:1rem!important;
+    min-height:56px;
+    font-size:.82rem;
+  }
+}
 </style>
 
 <style>
@@ -960,8 +1034,8 @@ ul{list-style:none}
       <h2 class="section-title reveal d1">Consulte suas datas</h2>
       <p class="section-sub reveal d2">Escolha o quarto e o período. O sistema verifica automaticamente bloqueios e calcula o valor das diárias.</p>
     </div>
-    <div class="reveal" style="max-width:850px;margin:2.5rem auto 0;background:#fff;border-radius:22px;padding:clamp(1.2rem,4vw,2rem);box-shadow:var(--shadow-soft)">
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem>
+    <div class="reveal availability-box" style="max-width:850px;margin:2.5rem auto 0;background:#fff;border-radius:22px;padding:clamp(1.2rem,4vw,2rem);box-shadow:var(--shadow-soft)">
+      <div class="availability-form">
         <label style="display:flex;flex-direction:column;gap:.4rem;font-weight:600;color:var(--deep)">Quarto
           <select id="availabilityRoom" style="padding:.85rem;border:1px solid #ccd8dc;border-radius:10px;background:#fff"></select>
         </label>
