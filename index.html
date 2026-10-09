@@ -527,7 +527,7 @@ ul{list-style:none}
 .room-carousel-track::-webkit-scrollbar{display:none}
 .room-slide{flex:0 0 100%;width:100%;height:100%;min-width:100%;scroll-snap-align:start;position:relative;margin:0;padding:0;overflow:hidden;background:#082f40}
 .room-slide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.03),transparent 50%,rgba(0,0,0,.16));pointer-events:none}
-.room-slide img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover;object-position:center;opacity:1!important;transform:none!important}.room-slide video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#082f40}
+.room-video-slide video{width:100%;height:100%;object-fit:cover;background:#052b3d}.room-slide img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover;object-position:center;opacity:1!important;transform:none!important}.room-slide video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#082f40}
 .room-carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:6;width:42px;height:42px;border:1px solid rgba(255,255,255,.5);border-radius:50%;background:rgba(5,43,61,.55);backdrop-filter:blur(8px);color:#fff;font-size:30px;line-height:1;display:grid;place-items:center;cursor:pointer;transition:.25s}
 .room-carousel-btn:hover{background:rgba(5,43,61,.82);transform:translateY(-50%) scale(1.05)}
 .room-carousel-btn:disabled{opacity:.35;cursor:default}
@@ -620,14 +620,14 @@ ul{list-style:none}
 <section class="section about" id="pousada">
   <div class="container about-grid">
     <div class="about-collage reveal">
-      <figure class="ph" data-label="Foto: vista da pousada — adicionar assets/img/apresentacao-1.webp">
-        <img src="assets/img/apresentacao-1.webp" alt="Vista da Pousada Costa Suítes com o mar ao fundo" loading="lazy" decoding="async" onerror="this.classList.add('missing');this.closest('.ph')?.classList.add('has-missing')">
+      <figure class="ph" data-label="Foto: vista da pousada — adicionar assets/img/frente-da-pousada.webp">
+        <img src="assets/img/frente-da-pousada.webp" alt="Frente da Pousada Costa Suítes" loading="lazy" decoding="async" onerror="this.classList.add('missing');this.closest('.ph')?.classList.add('has-missing')">
       </figure>
-      <figure class="ph" data-label="Foto: área de descanso — assets/img/apresentacao-2.webp">
-        <img src="assets/img/apresentacao-2.webp" alt="Área de descanso e convivência da pousada" loading="lazy" decoding="async" onerror="this.classList.add('missing');this.closest('.ph')?.classList.add('has-missing')">
+      <figure class="ph" data-label="Foto: área de descanso — assets/img/area-de-descanso.webp">
+        <img src="assets/img/area-de-descanso.webp" alt="Área de descanso da Pousada Costa Suítes" loading="lazy" decoding="async" onerror="this.classList.add('missing');this.closest('.ph')?.classList.add('has-missing')">
       </figure>
-      <figure class="ph" data-label="Foto: detalhes da pousada — assets/img/apresentacao-3.webp">
-        <img src="assets/img/apresentacao-3.webp" alt="Detalhes do ambiente acolhedor da pousada" loading="lazy" decoding="async" onerror="this.classList.add('missing');this.closest('.ph')?.classList.add('has-missing')">
+      <figure class="ph" data-label="Foto: detalhes da pousada — assets/img/recepcao.webp">
+        <img src="assets/img/recepcao.webp" alt="Recepção da Pousada Costa Suítes" loading="lazy" decoding="async" onerror="this.classList.add('missing');this.closest('.ph')?.classList.add('has-missing')">
       </figure>
     </div>
     <div>
@@ -901,7 +901,7 @@ ul{list-style:none}
               <figure class="room-slide"><img src="assets/quarto-7/q7-07.webp?v=5" alt="Quarto 7 — banheiro" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/quarto-7.webp?v=5'"></figure>
               <figure class="room-slide"><img src="assets/quarto-7/q7-08.webp?v=5" alt="Quarto 7 — banheiro e detalhes internos" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/quarto-7.webp?v=5'"></figure>
               <figure class="room-slide"><img src="assets/quarto-7/q7-09.webp?v=5" alt="Quarto 7 — quarto com televisão" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/quarto-7.webp?v=5'"></figure>
-              <figure class="room-slide"><img src="assets/quarto-7/q7-10.webp?v=5" alt="Quarto 7 — cama, armário e detalhes" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/quarto-7.webp?v=5'"></figure>
+              <figure class="room-slide"><img src="assets/quarto-7/q7-10.webp?v=5" alt="Quarto 7 — cama, armário e detalhes" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/quarto-7.webp?v=5'"></figure> <figure class="room-slide room-video-slide"><video controls muted playsinline preload="metadata" poster="assets/quarto-7/q7-01.webp?v=5"><source src="assets/quarto-7/video/quarto-7-remasterizado-jazz-praiano.mp4" type="video/mp4"></video></figure>
             </div>
             <button class="room-carousel-btn prev" type="button" aria-label="Foto anterior">‹</button>
             <button class="room-carousel-btn next" type="button" aria-label="Próxima foto">›</button>
