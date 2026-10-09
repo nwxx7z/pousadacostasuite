@@ -1,6 +1,11 @@
 CREATE TABLE IF NOT EXISTS rooms (id SERIAL PRIMARY KEY, number INTEGER UNIQUE NOT NULL, name TEXT NOT NULL, active BOOLEAN NOT NULL DEFAULT true);
-CREATE TABLE IF NOT EXISTS prices (id SERIAL PRIMARY KEY, room_id INTEGER NOT NULL REFERENCES rooms(id) ON DELETE CASCADE, price NUMERIC(10,2) NOT NULL, start_date DATE NOT NULL, end_date DATE NOT NULL, CHECK(end_date >= start_date));
+CREATE TABLE IF NOT EXISTS prices (id SERIAL PRIMARY KEY, room_id INTEGER NOT NULL REFERENCES rooms(id) ON DELETE CASCADE, price NUMERIC(10,2) NOT NULL, price_triple NUMERIC(10,2), start_date DATE NOT NULL, end_date DATE NOT NULL, CHECK(end_date >= start_date));
+ALTER TABLE prices ADD COLUMN IF NOT EXISTS price_triple NUMERIC(10,2);
 CREATE TABLE IF NOT EXISTS availability_blocks (id SERIAL PRIMARY KEY, room_id INTEGER NOT NULL REFERENCES rooms(id) ON DELETE CASCADE, reason TEXT, start_date DATE NOT NULL, end_date DATE NOT NULL, CHECK(end_date >= start_date));
 INSERT INTO rooms(number,name) VALUES
 (1,'Suíte Casal'),(2,'Suíte Casal'),(3,'Suíte Casal'),(4,'Suíte Quádrupla'),(5,'Suíte com Vista para o Mar'),(6,'Suíte com Varanda e Vista para o Mar'),(7,'Suíte com Varanda e Vista para o Mar')
 ON CONFLICT(number) DO NOTHING;
+INSERT INTO prices(room_id,price,price_triple,start_date,end_date) SELECT id,171.00,243.00,'2026-10-13','2026-10-30' FROM rooms WHERE number IN (5,7) AND NOT EXISTS (SELECT 1 FROM prices p WHERE p.room_id=rooms.id AND p.start_date='2026-10-13' AND p.end_date='2026-10-30');
+INSERT INTO prices(room_id,price,price_triple,start_date,end_date) SELECT id,171.00,243.00,'2026-11-01','2026-11-19' FROM rooms WHERE number IN (5,7) AND NOT EXISTS (SELECT 1 FROM prices p WHERE p.room_id=rooms.id AND p.start_date='2026-11-01' AND p.end_date='2026-11-19');
+INSERT INTO prices(room_id,price,price_triple,start_date,end_date) SELECT id,223.62,319.50,'2026-11-20','2026-11-21' FROM rooms WHERE number IN (5,7) AND NOT EXISTS (SELECT 1 FROM prices p WHERE p.room_id=rooms.id AND p.start_date='2026-11-20' AND p.end_date='2026-11-21');
+INSERT INTO prices(room_id,price,price_triple,start_date,end_date) SELECT id,171.00,243.00,'2026-11-22','2026-12-22' FROM rooms WHERE number IN (5,7) AND NOT EXISTS (SELECT 1 FROM prices p WHERE p.room_id=rooms.id AND p.start_date='2026-11-22' AND p.end_date='2026-12-22');
