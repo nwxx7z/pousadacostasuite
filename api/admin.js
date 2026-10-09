@@ -14,6 +14,10 @@ async function init(sql){
  await sql`INSERT INTO prices(room_id,price,price_triple,start_date,end_date) SELECT id,171.00,243.00,'2026-11-01','2026-11-19' FROM rooms WHERE number IN (5,7) AND NOT EXISTS (SELECT 1 FROM prices p WHERE p.room_id=rooms.id AND p.start_date='2026-11-01' AND p.end_date='2026-11-19')`;
  await sql`INSERT INTO prices(room_id,price,price_triple,start_date,end_date) SELECT id,223.62,319.50,'2026-11-20','2026-11-21' FROM rooms WHERE number IN (5,7) AND NOT EXISTS (SELECT 1 FROM prices p WHERE p.room_id=rooms.id AND p.start_date='2026-11-20' AND p.end_date='2026-11-21')`;
  await sql`INSERT INTO prices(room_id,price,price_triple,start_date,end_date) SELECT id,171.00,243.00,'2026-11-22','2026-12-22' FROM rooms WHERE number IN (5,7) AND NOT EXISTS (SELECT 1 FROM prices p WHERE p.room_id=rooms.id AND p.start_date='2026-11-22' AND p.end_date='2026-12-22')`;
+ await sql`INSERT INTO prices(room_id,price,start_date,end_date) SELECT id,171.00,'2026-10-13','2026-10-30' FROM rooms WHERE number=6 AND NOT EXISTS (SELECT 1 FROM prices p WHERE p.room_id=rooms.id AND p.start_date='2026-10-13' AND p.end_date='2026-10-30')`;
+ await sql`INSERT INTO prices(room_id,price,start_date,end_date) SELECT id,171.00,'2026-11-01','2026-11-19' FROM rooms WHERE number=6 AND NOT EXISTS (SELECT 1 FROM prices p WHERE p.room_id=rooms.id AND p.start_date='2026-11-01' AND p.end_date='2026-11-19')`;
+ await sql`INSERT INTO prices(room_id,price,start_date,end_date) SELECT id,223.00,'2026-11-20','2026-11-21' FROM rooms WHERE number=6 AND NOT EXISTS (SELECT 1 FROM prices p WHERE p.room_id=rooms.id AND p.start_date='2026-11-20' AND p.end_date='2026-11-21')`;
+ await sql`INSERT INTO prices(room_id,price,start_date,end_date) SELECT id,171.00,'2026-11-22','2026-12-22' FROM rooms WHERE number=6 AND NOT EXISTS (SELECT 1 FROM prices p WHERE p.room_id=rooms.id AND p.start_date='2026-11-22' AND p.end_date='2026-12-22')`;
 }
 function auth(req){return !!process.env.ADMIN_PASSWORD && req.headers['x-admin-password']===process.env.ADMIN_PASSWORD}
 module.exports=async function(req,res){
