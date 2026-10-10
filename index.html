@@ -572,6 +572,26 @@ ul{list-style:none}
 .amen-tour-cta h3{margin:.35rem 0;font-family:var(--font-display);font-size:clamp(1.3rem,3vw,1.8rem);color:var(--deep)}
 .amen-tour-cta p{margin:0;color:var(--muted)}
 @media(max-width:640px){.amen-tour-cta{align-items:stretch;flex-direction:column}.amen-tour-cta .btn{justify-content:center;text-align:center}.pousada-slide-arrow{width:38px;height:38px}.pousada-slide-item{height:300px}}
+/* Agendamento do passeio às piscinas naturais */
+.tour-booking{margin-top:2rem;background:#fff;border:1px solid rgba(13,87,111,.12);border-radius:24px;overflow:hidden;box-shadow:var(--shadow-soft);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}
+.tour-photo{min-height:340px;background:linear-gradient(135deg,#d7edf0,#f5ead5);position:relative;overflow:hidden}
+.tour-photo img{display:block;width:100%;height:100%;min-height:340px;position:absolute;inset:0;object-fit:cover}
+.tour-photo.photo-placeholder{display:grid;place-items:center;padding:2rem;text-align:center;color:var(--deep)}
+.photo-hint{max-width:280px;line-height:1.6}
+.tour-booking-content{padding:clamp(1.3rem,4vw,2.2rem)}
+.tour-booking-content h3{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.15rem);line-height:1.15;color:var(--deep);margin:.5rem 0 1rem}
+.tour-booking-content>p{color:var(--muted)}
+.tour-price{display:flex;align-items:baseline;gap:.45rem;margin:.3rem 0!important}
+.tour-price strong{font-family:var(--font-display);font-size:1.8rem;color:var(--ocean)}
+.tour-price span{color:var(--muted)}
+.tour-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.3rem 0}
+.tour-form label{display:flex;flex-direction:column;gap:.45rem;font-weight:600;color:var(--deep);font-size:.92rem}
+.tour-form input,.tour-form select{width:100%;min-width:0;padding:.85rem;border:1px solid #ccd8dc;border-radius:10px;background:#fff;color:var(--deep);font:inherit}
+.tour-total{padding:1rem;border-radius:12px;background:var(--sand);color:var(--deep);display:flex;justify-content:space-between;gap:1rem;margin-bottom:1rem}
+.tour-total strong{font-size:1.15rem;white-space:nowrap}
+.tour-booking-content>.btn{width:100%;justify-content:center;text-align:center}
+.tour-note{display:block;margin-top:.8rem;color:var(--muted);line-height:1.5}
+@media(max-width:700px){.tour-booking{grid-template-columns:1fr}.tour-photo,.tour-photo img{min-height:240px;height:240px}.tour-form{grid-template-columns:1fr}}
 </style>
 
 <style>
@@ -1145,13 +1165,24 @@ ul{list-style:none}
         <strong>Café da manhã incluso</strong><span>Comece o dia com mais sabor e tranquilidade</span>
       </div>
     </div>
-    <div class="amen-tour-cta reveal">
-      <div>
-        <span class="eyebrow">Viva São Bento</span>
-        <h3>Passeio às Piscinas Naturais de São Bento</h3>
-        <p>Consulte pelo WhatsApp as informações e a disponibilidade do passeio.</p>
+    <div class="tour-booking reveal" id="passeio-piscinas">
+      <div class="tour-photo">
+        <img src="assets/passeiopiscinas/piscinas-naturais.jpg" alt="Piscinas Naturais de São Bento" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('photo-placeholder');this.parentElement.querySelector('.photo-hint').style.display='block'">
+        <div class="photo-hint" style="display:none">Adicione a foto em <strong>assets/passeiopiscinas/piscinas-naturais.jpg</strong></div>
       </div>
-      <a class="btn btn-whatsapp" href="https://wa.me/5582988607037?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20sobre%20o%20passeio%20para%20as%20Piscinas%20Naturais%20de%20S%C3%A3o%20Bento." target="_blank" rel="noopener">Consultar passeio pelo WhatsApp</a>
+      <div class="tour-booking-content">
+        <span class="eyebrow">Experiência em São Bento</span>
+        <h3>Passeio às Piscinas Naturais de São Bento</h3>
+        <p class="tour-price"><strong>R$ 100,00</strong> <span>por pessoa</span></p>
+        <p>Escolha a data e a quantidade de pessoas para solicitar seu passeio pelo WhatsApp.</p>
+        <div class="tour-form">
+          <label>Data desejada<input id="tourDate" type="date" required></label>
+          <label>Quantidade de pessoas<select id="tourPeople"><option value="1">1 pessoa</option><option value="2">2 pessoas</option><option value="3">3 pessoas</option><option value="4">4 pessoas</option><option value="5">5 pessoas</option><option value="6">6 pessoas</option><option value="7">7 pessoas</option><option value="8">8 pessoas</option><option value="9">9 pessoas</option><option value="10">10 pessoas</option></select></label>
+        </div>
+        <div class="tour-total">Total estimado: <strong id="tourTotal">R$ 100,00</strong></div>
+        <a class="btn btn-whatsapp" id="tourBookBtn" href="https://wa.me/5582988607037" target="_blank" rel="noopener">Solicitar passeio pelo WhatsApp</a>
+        <small class="tour-note">A data e o passeio serão confirmados pela pousada via WhatsApp.</small>
+      </div>
     </div>
   </div>
 </section>
@@ -1465,6 +1496,22 @@ ul{list-style:none}
     pousadaDots.forEach((dot,i)=>dot.addEventListener('click',()=>pousadaGo(i)));
     pousadaTrack.addEventListener('scroll',()=>{const i=Math.round(pousadaTrack.scrollLeft/pousadaTrack.clientWidth);pousadaDots.forEach((dot,j)=>dot.classList.toggle('active',i===j));},{passive:true});
   }
+  const tourPeople=document.getElementById('tourPeople');
+  const tourDate=document.getElementById('tourDate');
+  const tourTotal=document.getElementById('tourTotal');
+  const tourBookBtn=document.getElementById('tourBookBtn');
+  const tourMoney=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(n);
+  function updateTourBooking(){
+    if(!tourPeople||!tourDate||!tourTotal||!tourBookBtn)return;
+    const people=Number(tourPeople.value||1),total=people*100;
+    tourTotal.textContent=tourMoney(total);
+    const date=tourDate.value?new Date(tourDate.value+'T12:00:00').toLocaleDateString('pt-BR'):'A definir';
+    const msg='Olá! Gostaria de consultar/agendar o passeio para as Piscinas Naturais de São Bento. Data desejada: '+date+'. Quantidade de pessoas: '+people+'. Valor estimado: '+tourMoney(total)+' (R$ 100,00 por pessoa). Poderiam confirmar disponibilidade e detalhes?';
+    tourBookBtn.href='https://wa.me/5582988607037?text='+encodeURIComponent(msg);
+  }
+  tourPeople?.addEventListener('change',updateTourBooking);
+  tourDate?.addEventListener('change',updateTourBooking);
+  updateTourBooking();
 </script>
 </body>
 </html>
