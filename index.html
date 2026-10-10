@@ -592,6 +592,10 @@ ul{list-style:none}
 .tour-booking-content>.btn{width:100%;justify-content:center;text-align:center}
 .tour-note{display:block;margin-top:.8rem;color:var(--muted);line-height:1.5}
 @media(max-width:700px){.tour-booking{grid-template-columns:1fr}.tour-photo,.tour-photo img{min-height:240px;height:240px}.tour-form{grid-template-columns:1fr}}
+
+.tour-section{scroll-margin-top:90px}
+.tour-duration{margin:.6rem 0 1rem!important;padding:.75rem .9rem;border-radius:10px;background:var(--sand);color:var(--deep)!important}
+.tour-duration span{font-size:1.15rem;margin-right:.35rem;color:var(--ocean)}
 </style>
 
 <style>
@@ -1035,6 +1039,37 @@ ul{list-style:none}
   </div>
 </section>
 
+<!-- ================= PASSEIO ÀS PISCINAS NATURAIS ================= -->
+<section class="section tour-section" style="background:var(--sand);padding-top:2rem;padding-bottom:3rem">
+  <div class="container">
+    <div class="center">
+      <span class="eyebrow reveal">Além da hospedagem</span>
+      <h2 class="section-title reveal d1">Conheça as Piscinas Naturais de São Bento</h2>
+      <p class="section-sub reveal d2">Combine sua estadia com uma experiência inesquecível no mar.</p>
+    </div>
+    <div class="tour-booking reveal" id="passeio-piscinas">
+      <div class="tour-photo">
+        <img src="assets/passeiopiscinas/piscinas-naturais.jpg" alt="Piscinas Naturais de São Bento" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('photo-placeholder');this.parentElement.querySelector('.photo-hint').style.display='block'">
+        <div class="photo-hint" style="display:none">Adicione a foto em <strong>assets/passeiopiscinas/piscinas-naturais.jpg</strong></div>
+      </div>
+      <div class="tour-booking-content">
+        <span class="eyebrow">Experiência em São Bento</span>
+        <h3>Passeio às Piscinas Naturais de São Bento</h3>
+        <p class="tour-price"><strong>R$ 100,00</strong> <span>por pessoa</span></p>
+        <p class="tour-duration"><span aria-hidden="true">◷</span> Duração aproximada: <strong>2 horas</strong></p>
+        <p>Escolha a data e a quantidade de pessoas para solicitar seu passeio pelo WhatsApp.</p>
+        <div class="tour-form">
+          <label>Data desejada<input id="tourDate" type="date" required></label>
+          <label>Quantidade de pessoas<select id="tourPeople"><option value="1">1 pessoa</option><option value="2">2 pessoas</option><option value="3">3 pessoas</option><option value="4">4 pessoas</option><option value="5">5 pessoas</option><option value="6">6 pessoas</option><option value="7">7 pessoas</option><option value="8">8 pessoas</option><option value="9">9 pessoas</option><option value="10">10 pessoas</option></select></label>
+        </div>
+        <div class="tour-total">Total estimado: <strong id="tourTotal">R$ 100,00</strong></div>
+        <a class="btn btn-whatsapp" id="tourBookBtn" href="https://wa.me/5582988607037" target="_blank" rel="noopener">Solicitar passeio pelo WhatsApp</a>
+        <small class="tour-note">A data e o passeio serão confirmados pela pousada via WhatsApp.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= CTA intermediário ================= -->
 <section class="section cta-mid">
   <div class="container">
@@ -1165,25 +1200,7 @@ ul{list-style:none}
         <strong>Café da manhã incluso</strong><span>Comece o dia com mais sabor e tranquilidade</span>
       </div>
     </div>
-    <div class="tour-booking reveal" id="passeio-piscinas">
-      <div class="tour-photo">
-        <img src="assets/passeiopiscinas/piscinas-naturais.jpg" alt="Piscinas Naturais de São Bento" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('photo-placeholder');this.parentElement.querySelector('.photo-hint').style.display='block'">
-        <div class="photo-hint" style="display:none">Adicione a foto em <strong>assets/passeiopiscinas/piscinas-naturais.jpg</strong></div>
-      </div>
-      <div class="tour-booking-content">
-        <span class="eyebrow">Experiência em São Bento</span>
-        <h3>Passeio às Piscinas Naturais de São Bento</h3>
-        <p class="tour-price"><strong>R$ 100,00</strong> <span>por pessoa</span></p>
-        <p>Escolha a data e a quantidade de pessoas para solicitar seu passeio pelo WhatsApp.</p>
-        <div class="tour-form">
-          <label>Data desejada<input id="tourDate" type="date" required></label>
-          <label>Quantidade de pessoas<select id="tourPeople"><option value="1">1 pessoa</option><option value="2">2 pessoas</option><option value="3">3 pessoas</option><option value="4">4 pessoas</option><option value="5">5 pessoas</option><option value="6">6 pessoas</option><option value="7">7 pessoas</option><option value="8">8 pessoas</option><option value="9">9 pessoas</option><option value="10">10 pessoas</option></select></label>
-        </div>
-        <div class="tour-total">Total estimado: <strong id="tourTotal">R$ 100,00</strong></div>
-        <a class="btn btn-whatsapp" id="tourBookBtn" href="https://wa.me/5582988607037" target="_blank" rel="noopener">Solicitar passeio pelo WhatsApp</a>
-        <small class="tour-note">A data e o passeio serão confirmados pela pousada via WhatsApp.</small>
-      </div>
-    </div>
+
   </div>
 </section>
 
