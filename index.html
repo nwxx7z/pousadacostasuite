@@ -1075,12 +1075,16 @@ ul{list-style:none}
       <div class="tour-photo-carousel" id="tourPhotoCarousel" aria-label="Fotos dos passeios às piscinas naturais">
         <div class="tour-photo-track" id="tourPhotoTrack">
           <figure class="tour-photo-slide photo-placeholder">
-            <img src="assets/passeiopiscinas/piscinas-naturais.jpg" alt="Piscinas naturais de Maragogi" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.style.display='none';this.parentElement.classList.add('photo-placeholder')">
-            <figcaption class="photo-hint"><span class="photo-placeholder-icon" aria-hidden="true">🌊</span><strong>Piscinas naturais de Maragogi</strong><span>assets/passeiopiscinas/piscinas-naturais.jpg</span></figcaption>
+            <img src="assets/passeiopiscinas/piscinas-naturais-maragogi.jpg" alt="Piscinas naturais de Maragogi" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.style.display='none';this.parentElement.classList.add('photo-placeholder')">
+            <figcaption class="photo-hint"><span class="photo-placeholder-icon" aria-hidden="true">🌊</span><strong>Piscinas naturais de Maragogi</strong><span>Foto das piscinas naturais</span></figcaption>
           </figure>
           <figure class="tour-photo-slide photo-placeholder">
-            <img src="assets/passeiopiscinas/croas-sao-bento.jpg" alt="Croas de São Bento" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.style.display='none';this.parentElement.classList.add('photo-placeholder')">
-            <figcaption class="photo-hint"><span class="photo-placeholder-icon" aria-hidden="true">🌊</span><strong>Croas de São Bento</strong><span>assets/passeiopiscinas/croas-sao-bento.jpg</span></figcaption>
+            <img src="assets/passeiopiscinas/croassaobento.jpeg" alt="Croas de São Bento" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.style.display='none';this.parentElement.classList.add('photo-placeholder')">
+            <figcaption class="photo-hint"><span class="photo-placeholder-icon" aria-hidden="true">🌊</span><strong>Croas de São Bento</strong><span>Foto das Croas de São Bento</span></figcaption>
+          </figure>
+          <figure class="tour-photo-slide photo-placeholder">
+            <img src="assets/passeiopiscinas/piscinas naturais2 Maragogi .webp" alt="Vista das piscinas naturais de Maragogi" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.style.display='none';this.parentElement.classList.add('photo-placeholder')">
+            <figcaption class="photo-hint"><span class="photo-placeholder-icon" aria-hidden="true">🌊</span><strong>Mais piscinas naturais de Maragogi</strong><span>Outra vista das piscinas naturais</span></figcaption>
           </figure>
         </div>
         <button class="tour-photo-arrow prev" type="button" aria-label="Foto anterior">‹</button>
@@ -1572,6 +1576,7 @@ ul{list-style:none}
     document.querySelector('.tour-photo-arrow.prev')?.addEventListener('click',()=>{const i=Math.round(tourPhotoTrack.scrollLeft/(tourPhotoTrack.clientWidth||1));tourPhotoTrack.scrollTo({left:tourPhotoSlides[(i-1+tourPhotoSlides.length)%tourPhotoSlides.length].offsetLeft,behavior:'smooth'});});
     document.querySelector('.tour-photo-arrow.next')?.addEventListener('click',()=>{const i=Math.round(tourPhotoTrack.scrollLeft/(tourPhotoTrack.clientWidth||1));tourPhotoTrack.scrollTo({left:tourPhotoSlides[(i+1)%tourPhotoSlides.length].offsetLeft,behavior:'smooth'});});
     tourPhotoTrack.addEventListener('scroll',updateTourPhoto,{passive:true});
+    updateTourPhoto();
   }
 </script>
 </body>
