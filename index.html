@@ -606,6 +606,20 @@ ul{list-style:none}
 .photo-placeholder-icon{font-size:3rem}
 .tour-photo .photo-hint code{overflow-wrap:anywhere;font-size:.8rem;background:#ffffffaa;padding:.25rem .4rem;border-radius:5px}
 @media(max-width:700px){.tour-photo{height:250px;min-height:250px;aspect-ratio:auto}.tour-photo img{height:250px;min-height:250px}}
+
+/* Carrossel de uma ou mais fotos para o passeio */
+.tour-photo-carousel{position:relative;min-width:0;min-height:300px;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(145deg,#d9eef0,#b6dce3 48%,#f5ead5)}
+.tour-photo-track{height:100%;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
+.tour-photo-track::-webkit-scrollbar{display:none}
+.tour-photo-slide{position:relative;flex:0 0 100%;height:100%;min-height:300px;margin:0;scroll-snap-align:start;display:grid;place-items:center;overflow:hidden}
+.tour-photo-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.tour-photo-slide.photo-placeholder:not(.has-photo) img{display:none}
+.tour-photo-slide .photo-hint{position:relative;z-index:1;display:flex;flex-direction:column;gap:.7rem;align-items:center;text-align:center;padding:2rem;color:var(--deep);line-height:1.5;overflow-wrap:anywhere}
+.tour-photo-slide.has-photo .photo-hint{display:none}
+.tour-photo-arrow{position:absolute;z-index:2;top:50%;transform:translateY(-50%);width:42px;height:42px;border:1px solid #ffffff99;border-radius:50%;background:#052b3dcc;color:#fff;font-size:2rem;line-height:1;display:grid;place-items:center;cursor:pointer}
+.tour-photo-arrow.prev{left:12px}.tour-photo-arrow.next{right:12px}
+.tour-photo-counter{position:absolute;z-index:2;right:14px;bottom:14px;padding:.35rem .75rem;border-radius:30px;background:#052b3dcc;color:white;font-size:.85rem;font-weight:700}
+@media(max-width:700px){.tour-photo-carousel{height:250px;min-height:250px;aspect-ratio:auto}.tour-photo-slide{height:250px;min-height:250px}}
 </style>
 
 <style>
@@ -1058,9 +1072,20 @@ ul{list-style:none}
       <p class="section-sub reveal d2">Conheça as Croas de São Bento e outras piscinas naturais de Maragogi em passeios inesquecíveis pelo mar.</p>
     </div>
     <div class="tour-booking reveal" id="passeio-piscinas">
-      <div class="tour-photo photo-placeholder" id="tourPhotoArea">
-        <img src="assets/passeiopiscinas/piscinas-naturais.jpg" alt="Croas de São Bento e piscinas naturais de Maragogi" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.style.display='none';this.parentElement.classList.add('photo-placeholder')">
-        <div class="photo-hint"><span class="photo-placeholder-icon" aria-hidden="true">🌊</span><strong>Foto das Piscinas Naturais de São Bento</strong><span>Adicione a imagem em <code>assets/passeiopiscinas/piscinas-naturais.jpg</code></span></div>
+      <div class="tour-photo-carousel" id="tourPhotoCarousel" aria-label="Fotos dos passeios às piscinas naturais">
+        <div class="tour-photo-track" id="tourPhotoTrack">
+          <figure class="tour-photo-slide photo-placeholder">
+            <img src="assets/passeiopiscinas/piscinas-naturais.jpg" alt="Piscinas naturais de Maragogi" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.style.display='none';this.parentElement.classList.add('photo-placeholder')">
+            <figcaption class="photo-hint"><span class="photo-placeholder-icon" aria-hidden="true">🌊</span><strong>Piscinas naturais de Maragogi</strong><span>assets/passeiopiscinas/piscinas-naturais.jpg</span></figcaption>
+          </figure>
+          <figure class="tour-photo-slide photo-placeholder">
+            <img src="assets/passeiopiscinas/croas-sao-bento.jpg" alt="Croas de São Bento" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.style.display='none';this.parentElement.classList.add('photo-placeholder')">
+            <figcaption class="photo-hint"><span class="photo-placeholder-icon" aria-hidden="true">🌊</span><strong>Croas de São Bento</strong><span>assets/passeiopiscinas/croas-sao-bento.jpg</span></figcaption>
+          </figure>
+        </div>
+        <button class="tour-photo-arrow prev" type="button" aria-label="Foto anterior">‹</button>
+        <button class="tour-photo-arrow next" type="button" aria-label="Próxima foto">›</button>
+        <div class="tour-photo-counter" id="tourPhotoCounter">1 / 2</div>
       </div>
       <div class="tour-booking-content">
         <span class="eyebrow">Experiência em São Bento</span>
@@ -1539,6 +1564,15 @@ ul{list-style:none}
   tourPeople?.addEventListener('change',updateTourBooking);
   tourDate?.addEventListener('change',updateTourBooking);
   updateTourBooking();
+  const tourPhotoTrack=document.getElementById('tourPhotoTrack');
+  const tourPhotoCounter=document.getElementById('tourPhotoCounter');
+  if(tourPhotoTrack){
+    const tourPhotoSlides=[...tourPhotoTrack.children];
+    const updateTourPhoto=()=>{const index=Math.min(tourPhotoSlides.length-1,Math.max(0,Math.round(tourPhotoTrack.scrollLeft/(tourPhotoTrack.clientWidth||1))));if(tourPhotoCounter)tourPhotoCounter.textContent=(index+1)+' / '+tourPhotoSlides.length;};
+    document.querySelector('.tour-photo-arrow.prev')?.addEventListener('click',()=>{const i=Math.round(tourPhotoTrack.scrollLeft/(tourPhotoTrack.clientWidth||1));tourPhotoTrack.scrollTo({left:tourPhotoSlides[(i-1+tourPhotoSlides.length)%tourPhotoSlides.length].offsetLeft,behavior:'smooth'});});
+    document.querySelector('.tour-photo-arrow.next')?.addEventListener('click',()=>{const i=Math.round(tourPhotoTrack.scrollLeft/(tourPhotoTrack.clientWidth||1));tourPhotoTrack.scrollTo({left:tourPhotoSlides[(i+1)%tourPhotoSlides.length].offsetLeft,behavior:'smooth'});});
+    tourPhotoTrack.addEventListener('scroll',updateTourPhoto,{passive:true});
+  }
 </script>
 </body>
 </html>
