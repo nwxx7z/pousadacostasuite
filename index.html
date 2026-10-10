@@ -555,6 +555,23 @@ ul{list-style:none}
     font-size:.82rem;
   }
 }
+/* Galeria final em formato de slide */
+.pousada-slideshow{background:var(--sand)}
+.pousada-slide{position:relative;margin:2rem auto 0;max-width:960px;border-radius:24px;overflow:hidden;box-shadow:0 20px 55px rgba(5,43,61,.16)}
+.pousada-slide-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
+.pousada-slide-track::-webkit-scrollbar{display:none}
+.pousada-slide-item{position:relative;flex:0 0 100%;margin:0;height:clamp(260px,55vw,560px);scroll-snap-align:center;background:var(--deep)}
+.pousada-slide-item img{width:100%;height:100%;object-fit:cover;display:block}
+.pousada-slide-item figcaption{position:absolute;inset:auto 0 0;padding:2.5rem 1.5rem 1.25rem;color:white;font-weight:700;font-size:1.05rem;background:linear-gradient(transparent,rgba(0,0,0,.72))}
+.pousada-slide-arrow{position:absolute;z-index:2;top:50%;transform:translateY(-50%);width:44px;height:44px;border:1px solid #ffffff80;border-radius:50%;background:#052b3dcc;color:#fff;font-size:2rem;line-height:1;display:grid;place-items:center;cursor:pointer}
+.pousada-slide-arrow.prev{left:14px}.pousada-slide-arrow.next{right:14px}
+.pousada-slide-dots{display:flex;justify-content:center;gap:10px;margin-top:1.1rem}
+.pousada-slide-dots button{width:10px;height:10px;padding:0;border:0;border-radius:99px;background:#9bb1b9;cursor:pointer;transition:width .2s,background .2s}
+.pousada-slide-dots button.active{width:28px;background:var(--ocean)}
+.amen-tour-cta{margin-top:2rem;padding:1.5rem;border-radius:20px;background:var(--sand);display:flex;align-items:center;justify-content:space-between;gap:1.5rem}
+.amen-tour-cta h3{margin:.35rem 0;font-family:var(--font-display);font-size:clamp(1.3rem,3vw,1.8rem);color:var(--deep)}
+.amen-tour-cta p{margin:0;color:var(--muted)}
+@media(max-width:640px){.amen-tour-cta{align-items:stretch;flex-direction:column}.amen-tour-cta .btn{justify-content:center;text-align:center}.pousada-slide-arrow{width:38px;height:38px}.pousada-slide-item{height:300px}}
 </style>
 
 <style>
@@ -1119,6 +1136,22 @@ ul{list-style:none}
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M8 3h8l2 4H6l2-4Z"/></svg></span>
         <strong>Televisão</strong><span>Entretenimento no seu quarto</span>
       </div>
+      <div class="amen-card reveal d3">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18l-2 10H5L3 10Z"/><path d="M7 10V6a5 5 0 0 1 10 0v4M2 20h20"/></svg></span>
+        <strong>Estacionamento coberto</strong><span>Mais comodidade e proteção para seu veículo</span>
+      </div>
+      <div class="amen-card reveal d1">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v7a3 3 0 0 0 6 0V3M7 3v18M16 3v18M16 3c4 2 4 7 0 9"/></svg></span>
+        <strong>Café da manhã incluso</strong><span>Comece o dia com mais sabor e tranquilidade</span>
+      </div>
+    </div>
+    <div class="amen-tour-cta reveal">
+      <div>
+        <span class="eyebrow">Viva São Bento</span>
+        <h3>Passeio às Piscinas Naturais de São Bento</h3>
+        <p>Consulte pelo WhatsApp as informações e a disponibilidade do passeio.</p>
+      </div>
+      <a class="btn btn-whatsapp" href="https://wa.me/5582988607037?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20sobre%20o%20passeio%20para%20as%20Piscinas%20Naturais%20de%20S%C3%A3o%20Bento." target="_blank" rel="noopener">Consultar passeio pelo WhatsApp</a>
     </div>
   </div>
 </section>
@@ -1178,6 +1211,31 @@ ul{list-style:none}
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.8 1.3 1.7 2.1 3 2.7.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 .9c.3.2.5.3.6.4 0 .1 0 .6-.2 1.1Z"/></svg>
       RESERVAR MINHA ESTADIA
     </a>
+  </div>
+</section>
+
+<!-- ================= GALERIA FINAL DA POUSADA ================= -->
+<section class="section pousada-slideshow" id="fotos-pousada">
+  <div class="container">
+    <div class="center">
+      <span class="eyebrow reveal">Um olhar pela pousada</span>
+      <h2 class="section-title reveal d1">Conheça nossos espaços</h2>
+      <p class="section-sub reveal d2">Veja mais detalhes da Pousada Costa Suítes e imagine sua próxima estadia.</p>
+    </div>
+    <div class="pousada-slide reveal" aria-label="Fotos da pousada">
+      <button class="pousada-slide-arrow prev" type="button" aria-label="Foto anterior">‹</button>
+      <div class="pousada-slide-track" id="pousadaSlideTrack">
+        <figure class="pousada-slide-item"><img src="assets/pousada/frente pousada.png" alt="Fachada da Pousada Costa Suítes" loading="lazy"><figcaption>Fachada da pousada</figcaption></figure>
+        <figure class="pousada-slide-item"><img src="assets/pousada/area descanso.png" alt="Área de descanso da pousada" loading="lazy"><figcaption>Área de descanso</figcaption></figure>
+        <figure class="pousada-slide-item"><img src="assets/pousada/recepcao.png" alt="Recepção da Pousada Costa Suítes" loading="lazy"><figcaption>Recepção</figcaption></figure>
+      </div>
+      <button class="pousada-slide-arrow next" type="button" aria-label="Próxima foto">›</button>
+    </div>
+    <div class="pousada-slide-dots" id="pousadaSlideDots" aria-label="Selecionar foto">
+      <button type="button" aria-label="Mostrar foto 1" class="active"></button>
+      <button type="button" aria-label="Mostrar foto 2"></button>
+      <button type="button" aria-label="Mostrar foto 3"></button>
+    </div>
   </div>
 </section>
 
@@ -1398,6 +1456,15 @@ ul{list-style:none}
   document.querySelectorAll('.room-occupancy').forEach(function(sel){sel.addEventListener('change',function(){const room=this.dataset.roomBooking,guests=Number(this.value),btn=document.querySelector('.room-booking-btn[data-room="'+room+'"]');const card=this.closest('.room-card'),priceEl=card&&card.querySelector('.price strong');const today=new Date().toISOString().slice(0,10);if(priceEl&&cfg){const roomData=cfg.rooms.find(function(r){return String(r.number)===String(room);});if(roomData){let price=getPrice(roomData.id,today,guests);if(price===null){const upcoming=(cfg.prices||[]).filter(function(p){return p.room_id===roomData.id&&p.end_date>=today}).sort(function(a,b){return a.start_date.localeCompare(b.start_date)})[0];if(upcoming)price=Number(guests)===3&&upcoming.price_triple!=null?Number(upcoming.price_triple):Number(upcoming.price);}if(price!==null)priceEl.textContent=money(price);}}const text='Olá! Gostaria de reservar o Quarto Nº '+room+' para '+(guests===3?'3 pessoas (triplo)':'2 pessoas (casal)')+'. Poderia me informar a disponibilidade e confirmar o valor da diária?';if(btn)btn.href='https://wa.me/5582988607037?text='+encodeURIComponent(text);});sel.dispatchEvent(new Event('change'));});
   load().then(function(){updateGuestOptions();document.querySelectorAll('.room-occupancy').forEach(function(sel){sel.dispatchEvent(new Event('change'));});});
 })();
+  const pousadaTrack=document.getElementById('pousadaSlideTrack');
+  const pousadaDots=[...document.querySelectorAll('#pousadaSlideDots button')];
+  if(pousadaTrack){
+    const pousadaGo=(n)=>{const slides=[...pousadaTrack.children];const index=(n+slides.length)%slides.length;pousadaTrack.scrollTo({left:slides[index].offsetLeft,behavior:'smooth'});pousadaDots.forEach((dot,i)=>dot.classList.toggle('active',i===index));};
+    document.querySelector('.pousada-slide-arrow.prev')?.addEventListener('click',()=>{const i=Math.round(pousadaTrack.scrollLeft/pousadaTrack.clientWidth);pousadaGo(i-1);});
+    document.querySelector('.pousada-slide-arrow.next')?.addEventListener('click',()=>{const i=Math.round(pousadaTrack.scrollLeft/pousadaTrack.clientWidth);pousadaGo(i+1);});
+    pousadaDots.forEach((dot,i)=>dot.addEventListener('click',()=>pousadaGo(i)));
+    pousadaTrack.addEventListener('scroll',()=>{const i=Math.round(pousadaTrack.scrollLeft/pousadaTrack.clientWidth);pousadaDots.forEach((dot,j)=>dot.classList.toggle('active',i===j));},{passive:true});
+  }
 </script>
 </body>
 </html>
