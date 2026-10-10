@@ -1054,17 +1054,17 @@ ul{list-style:none}
   <div class="container">
     <div class="center">
       <span class="eyebrow reveal">Além da hospedagem</span>
-      <h2 class="section-title reveal d1">Conheça as Piscinas Naturais de São Bento</h2>
-      <p class="section-sub reveal d2">Combine sua estadia com uma experiência inesquecível no mar.</p>
+      <h2 class="section-title reveal d1">Passeios pelas piscinas naturais de Maragogi</h2>
+      <p class="section-sub reveal d2">Conheça as Croas de São Bento e outras piscinas naturais de Maragogi em passeios inesquecíveis pelo mar.</p>
     </div>
     <div class="tour-booking reveal" id="passeio-piscinas">
       <div class="tour-photo photo-placeholder" id="tourPhotoArea">
-        <img src="assets/passeiopiscinas/piscinas-naturais.jpg" alt="Piscinas Naturais de São Bento" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.style.display='none';this.parentElement.classList.add('photo-placeholder')">
+        <img src="assets/passeiopiscinas/piscinas-naturais.jpg" alt="Croas de São Bento e piscinas naturais de Maragogi" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.style.display='none';this.parentElement.classList.add('photo-placeholder')">
         <div class="photo-hint"><span class="photo-placeholder-icon" aria-hidden="true">🌊</span><strong>Foto das Piscinas Naturais de São Bento</strong><span>Adicione a imagem em <code>assets/passeiopiscinas/piscinas-naturais.jpg</code></span></div>
       </div>
       <div class="tour-booking-content">
         <span class="eyebrow">Experiência em São Bento</span>
-        <h3>Passeio às Piscinas Naturais de São Bento</h3>
+        <h3>Passeios às Croas de São Bento e às Piscinas Naturais de Maragogi</h3>
         <p class="tour-price"><strong>R$ 100,00</strong> <span>por pessoa</span></p>
         <p class="tour-duration"><span aria-hidden="true">◷</span> Duração aproximada: <strong>2 horas</strong></p>
         <p>Escolha a data e a quantidade de pessoas para solicitar seu passeio pelo WhatsApp.</p>
@@ -1533,7 +1533,7 @@ ul{list-style:none}
     const people=Number(tourPeople.value||1),total=people*100;
     tourTotal.textContent=tourMoney(total);
     const date=tourDate.value?new Date(tourDate.value+'T12:00:00').toLocaleDateString('pt-BR'):'A definir';
-    const msg='Olá! Gostaria de consultar/agendar o passeio para as Piscinas Naturais de São Bento. Data desejada: '+date+'. Quantidade de pessoas: '+people+'. Valor estimado: '+tourMoney(total)+' (R$ 100,00 por pessoa). Poderiam confirmar disponibilidade e detalhes?';
+    const msg='Olá! Gostaria de consultar/agendar um passeio para as Croas de São Bento ou outras piscinas naturais de Maragogi. Data desejada: '+date+'. Quantidade de pessoas: '+people+'. Valor estimado: '+tourMoney(total)+' (R$ 100,00 por pessoa). Poderiam confirmar disponibilidade e detalhes?';
     tourBookBtn.href='https://wa.me/5582988607037?text='+encodeURIComponent(msg);
   }
   tourPeople?.addEventListener('change',updateTourBooking);
